@@ -12,7 +12,15 @@ SET GITHUBURL=https://github.com
 
 REM a top level directory for all PACS related code
 SET DEVSPACE="%CD%"
-SET GENERATOR="Visual Studio 17 2022" -A x64
+REM SET GENERATOR="Visual Studio 17 2022" -A x64
+
+IF "%3"=="vs2019" (
+    SET GENERATOR="Visual Studio 16 2019" -A x64
+) ELSE IF "%3"=="vs2026" (
+    SET GENERATOR="Visual Studio 18 2026" -A x64
+) ELSE (
+    SET GENERATOR="Visual Studio 17 2022" -A x64
+)
 
 cd %DEVSPACE%
 git clone --branch=DCMTK-3.6.8 --single-branch --depth 1 https://github.com/DCMTK/dcmtk.git
